@@ -55,9 +55,6 @@
                         <arcgis-directions mapid="myMapId" ng-if="item.id == 'directionWidget'"></arcgis-directions>
                         <chart-panel ng-if="item.id == 'chartWidget'"></chart-panel>
                     </content-panel>
-
-
-
                 </west>
 
                 <center-portion>
@@ -66,11 +63,13 @@
                                 basemap="{{map.basemap}}"
                                 options="{{map.options}}" scalebar="true" overviewmap="true">
 
+                        <arcgis-map-tool-bar>
+                                <arcgis-home-button> </arcgis-home-button>
+                        </arcgis-map-tool-bar>
 
                         <arcgis-dynamic-map-service-layer
                                 url="http://54.221.225.213/arcgis/rest/services/QuantumPlatform/Ambit_View/MapServer"
                                 name="Ambit_View">
-
                         </arcgis-dynamic-map-service-layer>
 
                         <arcgis-dynamic-map-service-layer

@@ -9,11 +9,10 @@ angular.module("arcgis-map")
             restrict:'E',
             scope:{
                 mapid:"@"
-
             },
             // define an interface for working with this directive
             controller: function ($scope, $element, $attrs) {
-                var mappromise = mapRegistry.get($scope.mapid);
+                var mappromise = mapRegistry.get("myMapId");
                 ///$element.attr("id","legendId")
                 mappromise.then(function(map){
                     require([

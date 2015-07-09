@@ -8,7 +8,6 @@ angular.module("arcgis-map")
 
         return {
             restrict: 'E',
-            transclude: true,
             scope: {
                 zoom: '=',
                 center: '=',
@@ -22,7 +21,7 @@ angular.module("arcgis-map")
 
             compile: function ($element, $attrs) {
 
-                $element.append("<nav-bar leftwidget='arcgis-home-button'></nav-bar><div style='width:{{width}}px;height:{{height}}px;' id='myMapId'></div>");
+                $element.append("<div style='width:{{width}}px;height:{{height}}px;' id='myMapId'></div>");
 
                 return function ($scope, $element, $attrs,controllers) {
 
@@ -259,40 +258,3 @@ angular.module("arcgis-map")
         };
     }]);
 
-angular.module("arcgis-map")
-    .directive('navBar', function () {
-        return {
-            restrict: 'E',
-            require: '^arcgisMap',
-            template: '<div class="navbar-fixed search-navBar">' +
-            '<nav class="white search-container">' +
-            '<div class="nav-wrapper">' +
-            '<div class="row">' +
-            '<div class="input-field">' +
-            '<input type="search" id="search-field" class="field" />' +
-            '<label id="search-field-label" for="search-field"></label>' +
-            '<div class="right-widget-container" id="right-widget-container"></div>'+
-            '<i class="right-widget mdi-maps-my-location"></i>' +
-            '<i class="right-widget mdi-navigation-more-vert"></i>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            ' </nav>' +
-            '</div>',
-            link: function (scope, elem, attrs, parentCtrl) {
-                scope.addLeftWidget(attrs.leftwidget)
-                //scope.addRightWidget(attrs.rightwidget)
-            },
-            controller: function ($scope, $element, $compile) {
-                $scope.addLeftWidget = function (directiveDom) {
-                    var el = $compile( '<' + directiveDom +'></'+ directiveDom +'>' )( $scope );
-                    $element.find('#search-field-label').html(el);
-                };
-
-                /*$scope.addRightWidget = function (directiveDom) {
-                    var el = $compile( '<' + directiveDom +'></'+ directiveDom +'>' )( $scope );
-                    $element.find('#right-widget-container').html(el);
-                };*/
-            },
-        }
-    })
